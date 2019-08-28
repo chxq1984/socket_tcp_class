@@ -1,0 +1,55 @@
+WORD类型：
+不是C++标准的类型，是微软SDK中的类型，WORD的意思为字，是2byte的无符号整数，表示范围0~65535.相当于c语言中2个char的范围
+
+MAKEWORD(2,2)：
+将两个byte型合并成一个word型，一个在高8位(b)，一个在低8位(a)
+在socket编程中声明调用不同的Winsock版本。
+例如MAKEWORD(2,2)就是调用2.2版，MAKEWORD(1,1)就是调用1.1版
+
+WSAStartup(WORD wVersionRequested,LPWSADATA lpWSAData)：
+使用Socket之前必须调用WSAStartup函数，此函数在应用程序中用来初始化Windows SocketsDLL，只有此函数调用成功后，应用程序才可以调用Windows SocketsDLL中的其他API函数，否则后面的任何函数都将调用失败。
+lpWSAData是一个指向WSAData结构的指针，WSAStartup会向该结构中填充其载入的Winsock动态链库的信息。
+
+socket函数原型：
+int socket(int af, int type, int protocol);
+
+af 为地址族（Address Family），也就是 IP 地址类型，
+AF_INET 表示 IPv4 地址，例如 127.0.0.1；
+AF_INET6 表示 IPv6 地址，例如 1030::C9B4:FF12:48AA:1A2B。
+
+type 为数据传输方式，常用的有 SOCK_STREAM 和 SOCK_DGRAM
+
+protocol 表示传输协议，常用的有 IPPROTO_TCP 和 IPPTOTO_UDP，分别表示 TCP 传输协议和 UDP 传输协议。
+
+inet_addr()：
+功能是将一个点分十进制的IP转换成一个长整数型数
+
+listen函数：
+https://blog.csdn.net/u010154760/article/details/45844037
+
+0x00:
+字符串类型，在遇到0x00就将截断，其后的字节不会再作为字符串的内容
+
+send函数：
+int send( SOCKET s, const char FAR *buf, int len, int flags );
+（1）第一个参数指定发送端套接字描述符；
+
+（2）第二个参数指明一个存放应用程序要发送数据的缓冲区；
+
+（3）第三个参数指明实际要发送的数据的字节数；
+
+（4）第四个参数一般置0。
+
+recv函数：
+int recv( SOCKET s, char FAR *buf, int len, int flags );
+（1）第一个参数指定接收端套接字描述符；
+
+（2）第二个参数指明一个缓冲区，该缓冲区用来存放recv函数接收到的数据；
+
+（3）第三个参数指明buf的长度；
+
+（4）第四个参数一般置0。
+
+uint16_t htons(uint16_t hostshort);
+
+多线程：https://blog.csdn.net/ouyangfushu/article/details/80199140
